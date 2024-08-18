@@ -5,7 +5,7 @@ export const addWidget = (categoryId, widget) => ({
   payload: { categoryId, widget },
 });
 
-export const removeWidget = (categoryId, widgetId) => ({
+export const removeWidget = (categoryId, updatedWidgets) => ({
   type: REMOVE_WIDGET,
-  payload: { categoryId, widgetId },
+  payload: { categoryId, updatedWidgets },
 });

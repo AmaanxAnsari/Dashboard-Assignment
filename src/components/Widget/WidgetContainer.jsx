@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import WidgetCards from "./WidgetCards";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { addWidget, removeWidget } from "../../redux/widgetActions";
 
 const WidgetContainer = () => {
+  const dispatch = useDispatch();
   const categories = useSelector((state) => state.categories);
   const [selectedCategory, setSelectedCategory] = useState(null);
-  console.log(selectedCategory);
+  const [updatedWidgets, setUpdatedWidgets] = useState([]);
 
   const [formData, setFormData] = useState({
     widgetName: "",
@@ -20,6 +22,16 @@ const WidgetContainer = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const handleCheckboxChange = (widgetId) => {
+    setUpdatedWidgets((prevWidgets) =>
+      prevWidgets.map((widget) =>
+        widget.id === widgetId
+          ? { ...widget, isChecked: !widget.isChecked }
+          : widget
+      )
+    );
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (selectedCategory) {
@@ -29,16 +41,35 @@ const WidgetContainer = () => {
         description: formData.widgetText,
         isChecked: false,
       };
+
+      dispatch(addWidget(selectedCategory.id, newWidget));
+
       setFormData({
         widgetName: "",
         widgetText: "",
       });
-      setSelectedCategory({
-        ...selectedCategory,
-        widgets: [...selectedCategory.widgets, newWidget],
-      });
+
+      setSelectedCategory((prevCategory) => ({
+        ...prevCategory,
+        widgets: [...prevCategory.widgets, newWidget],
+      }));
     }
   };
+  const handleSaveChanges = () => {
+    if (selectedCategory) {
+      dispatch(removeWidget(selectedCategory.id, updatedWidgets));
+      setSelectedCategory((prevCategory) => ({
+        ...prevCategory,
+        widgets: updatedWidgets,
+      }));
+    }
+  };
+
+  useEffect(() => {
+    if (selectedCategory) {
+      setUpdatedWidgets(selectedCategory.widgets);
+    }
+  }, [selectedCategory]);
 
   return (
     <>
@@ -46,7 +77,12 @@ const WidgetContainer = () => {
         <div key={category.id}>
           <h3>{category.categoryName}</h3>
           <div className="d-flex">
-            <WidgetCards widgets={category.widgets} />
+            {category.widgets
+              .filter((widgets) => widgets.isChecked)
+              .map((filteredWidget) => (
+                <WidgetCards key={filteredWidget.id} widgets={filteredWidget} />
+              ))}
+
             <div className="card" style={{ width: "18rem" }}>
               <div className="card-body">
                 <button
@@ -91,13 +127,14 @@ const WidgetContainer = () => {
                   <h6>Widgets</h6>
                   <ul className="list-group">
                     {selectedCategory &&
-                      selectedCategory.widgets.map((widget) => (
+                      updatedWidgets.map((widget) => (
                         <li key={widget.id} className="list-group-item">
                           <input
                             className="form-check-input me-2"
                             type="checkbox"
                             id={widget.id}
                             checked={widget.isChecked}
+                            onChange={() => handleCheckboxChange(widget.id)}
                           />
                           <label
                             className="form-check-label"
@@ -125,6 +162,7 @@ const WidgetContainer = () => {
                         name="widgetName"
                         value={formData.widgetName}
                         onChange={handleInputChange}
+                        required
                       />
                     </div>
                     <div className="mb-3">
@@ -139,7 +177,8 @@ const WidgetContainer = () => {
                         placeholder="Enter widget name"
                         value={formData.widgetText}
                         onChange={handleInputChange}
-                      ></input>
+                        required
+                      />
                     </div>
                     <button type="submit" className="btn btn-primary">
                       Save Widget
@@ -156,7 +195,12 @@ const WidgetContainer = () => {
               >
                 Close
               </button>
-              <button type="button" className="btn btn-primary">
+              <button
+                type="submit"
+                className="btn btn-primary"
+                onClick={handleSaveChanges}
+                data-bs-dismiss="modal"
+              >
                 Save changes
               </button>
             </div>

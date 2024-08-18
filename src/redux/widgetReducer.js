@@ -20,14 +20,13 @@ const categoriesReducer = (state = initialCategories, action) => {
     }
 
     case REMOVE_WIDGET: {
-      const { categoryId, widgetId } = action.payload;
+      const { categoryId, updatedWidgets } = action.payload;
+      console.log("🚀 ~ categoriesReducer ~ updatedWidgets:", updatedWidgets);
       const newState = state.map((category) => {
         if (category.id === categoryId) {
           return {
             ...category,
-            widgets: category.widgets.filter(
-              (widget) => widget.id !== widgetId
-            ),
+            widgets: updatedWidgets,
           };
         }
         return category;
