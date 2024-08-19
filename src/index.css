@@ -15,3 +15,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.zoom {
+  transition: transform .2s;
+  width: 20rem;
+  height: 10rem;
+}
+
+.zoom:hover {
+  transform: scale(1.03);
+}

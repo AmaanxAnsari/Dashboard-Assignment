@@ -108,7 +108,7 @@ const Signup = () => {
                     src="logo-white.png"
                     width="245"
                     height="80"
-                    alt="BootstrapBrain Logo"
+                    alt="Accuknox Logo"
                   />
                   <hr className="border-primary-subtle mb-4" />
                   <h2 className="mb-4">
