@@ -19,7 +19,6 @@ export const signupFailure = () => ({
 });
 
 export const logout = () => {
-  // localStorage.removeItem("authState");
   return {
     type: actionTypes.LOGOUT,
   };

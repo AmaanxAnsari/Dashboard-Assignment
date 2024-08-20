@@ -6,6 +6,8 @@ import bcrypt from "bcryptjs";
 import { loginFailure, loginSuccess } from "../../redux/authActions";
 import { toast, Bounce } from "react-toastify";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { loadCategories } from "../../redux/widgetActions";
+import categories from "../../data/category";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -45,6 +47,12 @@ const Login = () => {
 
     if (passwordCheck) {
       dispatch(loginSuccess(authState.user));
+
+      const categories = JSON.parse(localStorage.getItem("categories"));
+      console.log("Categories from Local Storage:", categories);
+      if (categories) {
+        dispatch(loadCategories(categories));
+      }
       navigate("/dashboard");
       toast.success("Login Successful !", {
         position: "top-center",
@@ -60,6 +68,8 @@ const Login = () => {
       setFormData({ ...formData, password: "" });
       dispatch(loginFailure());
     }
+    console.log("🚀 ~ handleSubmit ~ categories:", categories);
+    console.log("🚀 ~ handleSubmit ~ categories:", categories);
   };
 
   return (

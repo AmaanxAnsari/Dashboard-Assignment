@@ -1,4 +1,12 @@
-import { ADD_WIDGET, REMOVE_WIDGET } from "./constants";
+import { ADD_WIDGET, REMOVE_WIDGET, LOAD_CATEGORIES } from "./constants";
+
+export const loadCategories = (categories) => {
+  console.log("🚀 ~ loadCategories ~ categories:", categories);
+  return {
+    type: LOAD_CATEGORIES,
+    payload: categories,
+  };
+};
 
 export const addWidget = (categoryId, widget) => ({
   type: ADD_WIDGET,
