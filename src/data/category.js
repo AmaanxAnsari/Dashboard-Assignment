@@ -1,37 +1,56 @@
 const categories = [
   {
     id: 1,
-    categoryName: "Sales",
+    categoryName: "CSPM Executive",
     widgets: [
       {
         id: 1,
-        title: "Sales Report",
-        description: "A widget showing an overview of sales data over time.",
+        title: "Cloud Accounts",
+        description:
+          "A widget showing an overview of Cloud Accounts over time.",
         isChecked: true,
       },
       {
         id: 2,
-        title: "Top Products",
-        description: "A widget displaying the top products by revenue.",
+        title: "Cloud Account Risk Assessment",
+        description:
+          "A widget displaying the Risk Assessment of Cloud Accounts.",
         isChecked: true,
       },
     ],
   },
   {
     id: 2,
-    categoryName: "Marketing",
+    categoryName: "CWPP",
     widgets: [
       {
         id: 1,
-        title: "Campaign Performance",
-        description:
-          "A widget analyzing the performance of marketing campaigns.",
+        title: "Namespace Specific Alerts",
+        description: "A widget analyzing the Namespace Specific Alerts.",
         isChecked: true,
       },
       {
         id: 2,
-        title: "Top Channels",
-        description: "A widget listing the most effective marketing channels.",
+        title: "Workload Alerts",
+        description: "A widget listing the most Workload Alerts.",
+        isChecked: true,
+      },
+    ],
+  },
+  {
+    id: 2,
+    categoryName: "Registery Scan",
+    widgets: [
+      {
+        id: 1,
+        title: "Image Risk Assessment",
+        description: "A widget analyzing the Image Risk Assessment.",
+        isChecked: true,
+      },
+      {
+        id: 2,
+        title: "Image Security Issue",
+        description: "A widget listing Image Security Issue.",
         isChecked: true,
       },
     ],

@@ -5,7 +5,7 @@ import { logout } from "../../redux/authActions";
 import { useDispatch } from "react-redux";
 import { Bounce, toast } from "react-toastify";
 
-const Navbar = () => {
+const Navbar = ({ search, handleSearchChange }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -64,17 +64,19 @@ const Navbar = () => {
 
               <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
                 <input
-                  type="search"
+                  type="text"
                   className="form-control rounded-pill"
                   placeholder="Search Widgets..."
                   aria-label="Search"
+                  value={search}
+                  onChange={handleSearchChange}
                 />
               </form>
 
               <div className="dropdown text-end">
-                <span class="badge d-flex align-items-center p-1 pe-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">
+                <span className="badge d-flex align-items-center p-1 pe-2 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-pill">
                   <img
-                    class="rounded-circle me-1"
+                    className="rounded-circle me-1"
                     width="24"
                     height="24"
                     src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/upstream_13.png"
