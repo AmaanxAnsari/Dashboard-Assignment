@@ -38,7 +38,7 @@ const categories = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     categoryName: "Registery Scan",
     widgets: [
       {
