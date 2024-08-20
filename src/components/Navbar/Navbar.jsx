@@ -1,28 +1,7 @@
 import React from "react";
 import { IoLogOutOutline } from "react-icons/io5";
-import { Link, useNavigate } from "react-router-dom";
-import { logout } from "../../redux/authActions";
-import { useDispatch } from "react-redux";
-import { Bounce, toast } from "react-toastify";
 
 const Navbar = ({ search, handleSearchChange }) => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleLogout = () => {
-    dispatch(logout());
-    navigate("/");
-    toast.success("Logout Successful !", {
-      position: "top-center",
-      autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      progress: undefined,
-      theme: "dark",
-      transition: Bounce,
-    });
-  };
-  const storedUser = JSON.parse(localStorage.getItem("authState"));
   return (
     <>
       <div className="container-fluid p-0">
@@ -33,7 +12,7 @@ const Navbar = ({ search, handleSearchChange }) => {
           <div className="container-fluid">
             <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
               <a
-                href="/dashboard"
+                href="/"
                 className="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"
               >
                 <img src="logo-white.png" width="135" height="30" alt="" />
@@ -41,22 +20,22 @@ const Navbar = ({ search, handleSearchChange }) => {
 
               <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
                 <li>
-                  <a href="/dashboard" className="nav-link px-2 link-secondary">
+                  <a href="/" className="nav-link px-2 link-secondary">
                     Dashboard
                   </a>
                 </li>
                 <li>
-                  <Link href="/dashboard" className="nav-link px-2 link-light">
+                  <a href="/" className="nav-link px-2 link-light">
                     Inventory
-                  </Link>
+                  </a>
                 </li>
                 <li>
-                  <a href="/dashboard" className="nav-link px-2 link-light">
+                  <a href="/" className="nav-link px-2 link-light">
                     Customers
                   </a>
                 </li>
                 <li>
-                  <a href="/dashboard" className="nav-link px-2 link-light">
+                  <a href="/" className="nav-link px-2 link-light">
                     Products
                   </a>
                 </li>
@@ -82,13 +61,10 @@ const Navbar = ({ search, handleSearchChange }) => {
                     src="https://cdn.jsdelivr.net/gh/alohe/avatars/png/upstream_13.png"
                     alt=""
                   />
-                  {storedUser.user.name}
+                  Amaan Ansari
                 </span>
               </div>
-              <button
-                className="btn btn-sm btn-light ms-2 rounded-4"
-                onClick={handleLogout}
-              >
+              <button className="btn btn-sm btn-light ms-2 rounded-4">
                 <span className="me-2">Logout</span>
                 <IoLogOutOutline />
               </button>

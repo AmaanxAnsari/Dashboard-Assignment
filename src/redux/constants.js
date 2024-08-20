@@ -1,8 +1,2 @@
-export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
-export const LOGIN_FAILURE = "LOGIN_FAILURE";
-export const SIGNUP_SUCCESS = "SIGNUP_SUCCESS";
-export const SIGNUP_FAILURE = "SIGNUP_FAILURE";
-export const LOGOUT = "LOGOUT";
-export const LOAD_CATEGORIES = "LOAD_CATEGORIES";
 export const ADD_WIDGET = "ADD_WIDGET";
 export const REMOVE_WIDGET = "REMOVE_WIDGET";

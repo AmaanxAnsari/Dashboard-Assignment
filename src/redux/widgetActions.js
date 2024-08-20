@@ -1,11 +1,4 @@
-import { ADD_WIDGET, REMOVE_WIDGET, LOAD_CATEGORIES } from "./constants";
-
-export const loadCategories = (categories) => {
-  return {
-    type: LOAD_CATEGORIES,
-    payload: categories,
-  };
-};
+import { ADD_WIDGET, REMOVE_WIDGET } from "./constants";
 
 export const addWidget = (categoryId, widget) => ({
   type: ADD_WIDGET,

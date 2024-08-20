@@ -1,12 +1,9 @@
-import { ADD_WIDGET, LOAD_CATEGORIES, REMOVE_WIDGET } from "./constants";
+import { ADD_WIDGET, REMOVE_WIDGET } from "./constants";
 
 const initialCategories = JSON.parse(localStorage.getItem("categories")) || [];
 
 const categoriesReducer = (state = initialCategories, action) => {
   switch (action.type) {
-    case LOAD_CATEGORIES: {
-      return action.payload ? action.payload : state;
-    }
     case ADD_WIDGET: {
       const { categoryId, widget } = action.payload;
       const newState = state.map((category) => {

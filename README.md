@@ -64,24 +64,6 @@ npm install
 npm start
 ```
 
-## Note:
-
-- Bcryptjs is a nodejs library used for hashing passwords and mostly used in backend development , it is used in this project just for general purpose but not recommended to use in Frontend development.
-- While installing dependencies bcryptjs will give warning either ignore it wont affect project execution or make certain changes in your node_modules.
-- **node_modules\react-scripts\config\webpack.config.js**
-
-```bash
-resolve:{
-fallback: {
-      "crypto": false
-    }
-}
-
-```
-
-- add fallback object in resolve object mostly on line 305 or 306
-- Restart your app and now the warning will be resolved.
-
 ## Important Dependencies
 
 - React
@@ -89,45 +71,20 @@ fallback: {
 - React Redux
 - Redux Thunk
 
-## User authentication
-
-- The user authentication components implemented in this project are derived from a previous Accukonx assignment submitted on March 2024, ensuring a consistent and secure user login experience across applications.
-
-- [Github Link](https://github.com/AmaanxAnsari/User-Authentication)
-- [Readme File](https://github.com/AmaanxAnsari/User-Authentication/blob/main/README.md)
-
 ## Usage
 
-- Once the application is running, you can sign up with a new username and password and user credentials will be stored in localstorage.
-- After successful authentication, you will be redirected to the Dashboard section where you can see a Basic dashboard design containing Widget Cards a Add Widget button as well as Logout Button and Search bar.
+- Once the application is running, you will be redirected to the Dashboard section where you can see a Basic dashboard design containing Widget Cards a Add Widget button as well as Logout Button and Search bar.
 - **Add/Remove Widgets:** Use the AddProject component to add or remove widgets.
 - **Search and Filter:** Utilize the search bar to find specific widgets and filter them based on the isChecked status.
 - **Persistent State:** The application uses Redux and local storage to manage state across sessions.
 
-- Clicking on the logout button will log you out from the application.
-
 ## Screenshots
-
-### Signup Page
-
-![Signup Page](screenshots/1.UserSignup.png)
-
-- Users can sign up with a unique username, email and password.
-
-### Login Page
-
-![Login page](screenshots/2.UserLogin.png)
-
-- Upon Successful Registration user is redirected to login page.
-- Enter your registered credentials to login.
-- User credentials are stored in localstorage for further verification.
-- Password is hashed using bcryptjs Library.
 
 ### Dashboard
 
 ![Dashboard](screenshots/3.Dashboard.png)
 
-- After successful authentication, you will be redirected to the Dashboard section where you can see a Basic dashboard design containing Widget Cards a Add Widget button as well as Nav Bar containing Logout Button and Search bar.
+- After successful execution, you will be redirected to the Dashboard section where you can see a Basic dashboard design containing Widget Cards a Add Widget button as well as Nav Bar containing Logout Button and Search bar.
 
 ### Add Widget Button
 
