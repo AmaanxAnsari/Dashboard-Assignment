@@ -49,10 +49,13 @@ const Login = () => {
       dispatch(loginSuccess(authState.user));
 
       const categories = JSON.parse(localStorage.getItem("categories"));
-      console.log("Categories from Local Storage:", categories);
-      if (categories) {
+
+      if (Array.isArray(categories)) {
         dispatch(loadCategories(categories));
+      } else {
+        console.error("Categories is not an array:", categories);
       }
+
       navigate("/dashboard");
       toast.success("Login Successful !", {
         position: "top-center",
@@ -68,8 +71,6 @@ const Login = () => {
       setFormData({ ...formData, password: "" });
       dispatch(loginFailure());
     }
-    console.log("🚀 ~ handleSubmit ~ categories:", categories);
-    console.log("🚀 ~ handleSubmit ~ categories:", categories);
   };
 
   return (

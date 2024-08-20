@@ -5,7 +5,6 @@ const initialCategories = JSON.parse(localStorage.getItem("categories")) || [];
 const categoriesReducer = (state = initialCategories, action) => {
   switch (action.type) {
     case LOAD_CATEGORIES: {
-      console.log("🚀 ~ categoriesReducer ~ action.type:", action.payload);
       return action.payload ? action.payload : state;
     }
     case ADD_WIDGET: {

@@ -6,7 +6,6 @@ import AddWidget from "./AddWidget";
 
 const WidgetContainer = ({ search }) => {
   const categories = useSelector((state) => state.categories);
-  console.log("🚀 ~ WidgetContainer ~ categories:", categories);
   const [selectedCategory, setSelectedCategory] = useState(null);
 
   const handleModal = (category) => {
